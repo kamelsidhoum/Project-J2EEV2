@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Le CROUS de Dauphine | The Spoon</title>
+		<!--<link rel="stylesheet" href="style.css">-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<!-- Utilisation de Google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet">
+		<!-- Librairie d'icônes FontAwesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+		<style>
+			body {
+				font-family: Source Sans Pro;
+				font-weight: 400;
+				font-size: 15px;
+				margin: 0;
+				background-color: #fafafa;
+			}
+
+			body.no-scroll {
+				overflow: hidden;
+			}
+
+			::selection {
+				background-color: #1de9b6;
+				color: #fff;
+			}
+
+			a {
+				transition: all 0.1s;
+				color: #1de9b6;
+				text-decoration: none;
+			}
+
+			a:hover {
+				color: #00bfa5;
+				text-decoration: underline;
+			}
+
+			hr {
+				border: 0;
+				border-top: 1px solid #e4e4e4;
+				position: relative;
+				z-index: 888;
+				overflow: visible;
+				margin: 15px 0;
+			}
+
+			hr:after {
+				content: attr(text);
+				position: absolute;
+				left: 50%;
+				top: -10px;
+				transform: translateX(-50%);
+				font-size: 15px;
+				color: #ccc;
+				background-color: #fff;
+				padding: 0 5px;
+				z-index: 999;
+				text-transform: uppercase;
+			}
+
+			@keyframes animation-box-content {
+			  0% { border-radius: 50%; }
+				100% { border-radius: 50px 10px; }
+			}
+
+			#box-mask {
+			  position: fixed;
+			  top: 0;
+				left: 0;
+			  right: 0;
+			  bottom: 0;
+			  background-color: rgba(163, 176, 187, 0.5);
+				z-index: 998;
+			}
+
+			.box-content {
+			  animation: animation-box-content 0.3s;
+			  background-color: #fff;
+			  position: absolute;
+			  top: 50%;
+			  left: 50%;
+			  transform: translateX(-50%) translateY(-50%);
+			  border-radius: 50px 10px;
+			  padding: 15px;
+				width: 600px;
+				z-index: 999;
+				box-sizing: border-box;
+				max-width: calc(100vw - 20px);
+			}
+
+			.box-content#connexion-box, .box-content#inscription-box {
+				width: 600px;
+				padding: 40px 20px;
+			}
+
+			#connexion-box a, #inscription-box a {
+				color: #000;
+				display: block;
+				border-radius: 3px;
+				padding: 10px;
+			}
+
+			#connexion-box a:hover, #inscription-box a:hover {
+				text-decoration: none;
+				background-color: #1de9b6;
+				color: #fff;
+			}
+
+			#connexion-box a:hover p, #inscription-box a:hover p {
+				color: #fff;
+			}
+
+			#connexion-box h3, #inscription-box h3 {
+				font-family: Comfortaa;
+				font-weight: 700;
+				font-size: 25px;
+				position: relative;
+				margin: 0 0 10px;
+				text-align: center;
+			}
+
+			#connexion-box p, #inscription-box p {
+				margin: 0;
+				padding: 0 20px;
+				font-size: 14px;
+				color: #555;
+			}
+
+			header {
+				background-color: #fff;
+				border-bottom: 1px solid #e4e4e4;
+			}
+
+			nav {
+				padding: 20px 10px;
+				max-width: 1000px;
+				margin: 0 auto;
+				font-size: 0;
+			}
+
+			nav > * {
+				font-size: 15px;
+				line-height: 30px;
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			nav > h1 {
+				font-family: Comfortaa;
+				color: #aaa;
+				margin: 0;
+				font-weight: 400;
+				font-size: 24px;
+				cursor: default;
+			}
+
+			nav > h1 span {
+				color: #1de9b6;
+			}
+
+			nav > input {
+				transition: all 0.1s;
+				background-color: #fff;
+				border: 0;
+				padding: 5px 0;
+				font-size: 17px;
+				font-family: inherit;
+				width: calc(100% - 400px);
+				margin: 0 40px;
+				color: #ddd;
+				border-bottom: 2px solid transparent;
+			}
+
+			nav > input::placeholder, textarea::placeholder {
+				color: #aaa;
+				opacity: 1;
+			}
+
+			nav > input:focus {
+				font-size: 23px;
+				color: #000;
+				border-bottom-color: #1de9b6;
+				margin-right: 0;
+				width: calc(100% - 360px);
+			}
+
+			nav > input:focus::placeholder {
+				color: #000;
+				opacity: 1;
+			}
+
+			nav > input:focus + a, nav > input:focus + a + a {
+				position: relative;
+				opacity: 0;
+				z-index: -1;
+			}
+
+			nav > a {
+				color: #000;
+				margin: 0 10px;
+				font-size: 16px;
+			}
+
+			nav > a:first-child {
+				margin-left: 0;
+			}
+
+			nav > a:last-child {
+				margin-right: 0;
+			}
+
+			#search-mask {
+				display: none;
+				position: fixed;
+				top: 83px;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background-color: #fafafa;
+				padding-left: calc(50vw - 325px);
+				padding-right: calc(50vw - 315px);
+				z-index: 999;
+			}
+
+			#search-mask > ul {
+				list-style: none;
+				padding: 0;
+			}
+
+			#search-mask li {
+				transition: padding 0.1s;
+				display: block;
+				margin: 5px 0;
+				cursor: pointer;
+				padding: 3px 10px;
+				border-radius: 3px;
+				font-size: 17px;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+  			overflow: hidden;
+			}
+
+			#search-mask ul:first-child li:last-child {
+				color: #1de9b6;
+				text-transform: uppercase;
+				font-size: 18px;
+				border-left: 3px solid #1de9b6;
+				padding-left: 7px;
+				border-radius: 0 2px 2px 0;
+			}
+
+			#search-mask li:hover {
+				background-color: #1de9b6;
+				color: #fff;
+				padding-left: 13px;
+				padding-right: 7px;
+			}
+
+			#search-mask ul:first-child li:last-child:hover {
+				background-color: #eee;
+				color: #1de9b6;
+				padding-left: 7px;
+				padding-right: 10px;
+			}
+
+			#search-mask > span {
+				font-family: Comfortaa;
+				font-weight: 700;
+				font-size: 14px;
+				text-transform: uppercase;
+				color: #bbb;
+				margin: 30px 0 -10px;
+				display: block;
+			}
+
+			/* Footer */
+			footer {
+				clear: both;
+				background-color: #eee;
+				margin-top: 30px;
+				position: relative;
+				padding-bottom: 90px;
+				overflow: hidden;
+			}
+
+			footer > div:first-child {
+				font-size: 0;
+				max-width: 950px;
+				margin: 10px auto;
+				padding: 0 10px;
+			}
+
+			footer ul {
+				box-sizing: border-box;
+				font-size: 15px;
+				list-style: none;
+				display: inline-block;
+				vertical-align: top;
+				width: calc(100% / 3);
+				padding: 10px 0;
+				line-height: 25px;
+			}
+
+			footer ul li:first-child {
+				text-transform: uppercase;
+				font-family: Comfortaa;
+				font-weight: 700;
+				font-size: 11px;
+				color: #999;
+			}
+
+			footer ul li a:not(:hover) {
+				color: #555;
+			}
+
+			footer > div:nth-child(2) {
+				background-color: #ccc;
+				padding: 25px 10px 25px calc(50vw - 475px);
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 950px;
+				z-index: 2;
+				color: #777;
+				line-height: 35px;
+			}
+
+			footer > div:nth-child(2) span {
+				margin-left: 10px;
+			}
+
+			footer > div:nth-child(2) a {
+				color: #00bfa5;
+			}
+
+			footer > div:last-child {
+				background-color: #999;
+				padding: 25px calc(50vw - 475px) 25px 20px;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 170px;
+				z-index: 3;
+				line-height: 30px;
+			}
+
+			footer > div:last-child:before {
+				content: '';
+				position: absolute;
+				bottom: -32px;
+				left: -26px;
+				width: 100px;
+				height: 100px;
+				background-color: inherit;
+				transform: rotate(25deg);
+				z-index: -1;
+			}
+
+			footer > div:last-child a {
+				transition: border-radius 0.3s, color 0.3s, background-color 0.1s, text-shadow 0.3s;
+				font-size: 25px;
+				margin: 0 10px;
+				width: 25px;
+				display: inline-block;
+				border-radius: 0;
+				text-align: center;
+				padding: 3px;
+				line-height: 25px;
+				max-height: 25px;
+			}
+
+			footer > div:last-child a:hover {
+				background-color: #909090;
+				color: #fff;
+				border-radius: 10px;
+				text-shadow: -1px -1px 0 #00bfa5, 1px 1px 0 #1de9b6;
+			}
+
+			main {
+				max-width: 950px;
+				margin: 10px auto;
+				padding: 10px;
+				color: #444;
+			}
+
+			main h1 {
+				font-family: Comfortaa;
+				font-weight: 700;
+				font-size: 30px;
+				position: relative;
+				margin: 10px 0 30px;
+				color: #000;
+			}
+
+			main h1:after {
+				content: '';
+				position: absolute;
+				top: 45px;
+				left: 0;
+				height: 3px;
+				width: 70px;
+				background-color: #1de9b6;
+			}
+
+			main h2 {
+				font-family: Comfortaa;
+				font-weight: 700;
+				font-size: 18px;
+				text-transform: uppercase;
+				color: #000;
+				margin: 0;
+				display: block;
+			}
+
+			main > aside {
+				float: right;
+				width: 270px;
+				margin-left: 20px;
+			}
+
+			.aside-img {
+				font-size: 0;
+				position: relative;
+				margin-bottom: 25px;
+			}
+
+			.aside-img > img {
+				width: 100%;
+				margin-bottom: 2px;
+				display: block;
+			}
+
+			.aside-img > img:first-child {
+				border-radius: 7px 32px 0 0;
+			}
+
+			.aside-img > img:last-child {
+				border-radius: 0 0 7px 12px;
+				margin-bottom: 0;
+			}
+
+			.aside-img > i {
+				color: #1de9b6;
+				display: inline-block;
+				font-size: 40px;
+				cursor: pointer;
+				background-color: #fafafa;
+				position: absolute;
+				bottom: -20px;
+				left: 50%;
+				margin-left: -20px;
+				border-radius: 50%;
+				padding: 3px;
+			}
+
+			.aside-img > i:hover {
+				color: #00bfa5;
+			}
+
+			.img-openable {
+				box-sizing: border-box;
+				border: 2px solid transparent;
+				cursor: pointer;
+			}
+
+			.img-openable:hover {
+				border-color: #1de9b6 !important; /* important à supprimer plus tard */
+			}
+
+			main > article {
+				float: left;
+				width: calc(100% - 290px);
+			}
+
+			main p {
+				padding: 0;
+				margin: 5px 0;
+			}
+
+			main div > p:last-child {
+				margin-bottom: 0;
+			}
+
+			.star-rate {
+				font-size: 0;
+				color: #ffca28;
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			.star-rate i {
+				font-size: 18px;
+			}
+
+			.categories-list {
+				margin: 10px 0;
+				font-size: 0;
+				line-height: 22px;
+			}
+
+			.categories-list > span {
+				font-size: 15px;
+				background-color: #eee;
+				color: #00bfa5;
+				padding: 2px 5px;
+				display: inline-block;
+				border-radius: 15px;
+				cursor: default;
+				margin-right: 5px;
+				line-height: 17px;
+			}
+
+			.categories-list > span:hover {
+				background-color: #e0e0e0;
+			}
+
+			.tab-nav {
+				list-style: none;
+				padding: 0;
+				margin: -10px -10px 10px;
+				font-size: 0;
+			}
+
+			.tab-nav li {
+				transition: padding 0.1s, border 0.1s;
+				display: inline-block;
+				width: calc(100% / 3 - 24px);
+				border-top: 1px solid #e4e4e4;
+				font-family: Comfortaa;
+				font-weight: 300;
+				font-size: 16px;
+				text-transform: uppercase;
+				color: #444;
+				text-align: center;
+				padding: 12px;
+				cursor: pointer;
+			}
+
+			.tab-nav li:not(.active):hover {
+				border-top: 3px solid #e4e4e4;
+				background-color: #fcfcfc;
+				padding-top: 10px;
+				text-decoration: underline;
+				animation: focus-animation 2s infinite;
+			}
+
+			.tab-nav li.active {
+				border-top: 3px solid #1de9b6;
+				padding-top: 10px;
+				cursor: default;
+				color: #000;
+				font-weight: 700;
+			}
+
+			@keyframes focus-animation {
+				0% { text-shadow: 0 0 50px #1de9b6; }
+				50% { text-shadow: 0 0 20px #1de9b6; }
+				100% { text-shadow: 0 0 50px #1de9b6; }
+			}
+
+			*:not(nav) > input:focus::placeholder, textarea:focus::placeholder {
+				opacity: 1;
+				padding-left: 2px;
+				transition: padding 0.1s;
+			}
+
+			input, textarea { /* pour empêcher que sur Mac il y ait un halo bleu pas très joli (pour ne pas dire dégoutant) */
+				outline: 0;
+			}
+
+			*:not(input):not(textarea):focus {
+				transition: all 0s;
+				outline: 1px dashed #00bfa5;
+				outline-offset: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box-mask" style="display: none;"></div>
+		<div class="box-content" id="connexion-box" style="display: none;">
+			<a href="">
+				<h3>Connexion restaurateur</h3>
+				<p>Publier des annonces et gérez-les via votre espace dédié.</p>
+			</a>
+			
+			<a href="">
+				<h3>Connexion client</h3>
+				<p>Réservez en ligne dans un restaurant, évaluez les établissements que vous avez pu vister, et bien plus encore.</p>
+			</a>
+		</div>
+		<div class="box-content" id="inscription-box" style="display: none;">
+
+		</div>
+		<header>
+			<nav>
+				<h1>The <span>Spoon</span></h1>
+				<input type="text" placeholder="Rechercher un restaurant, une ville, une catégorie...">
+				<a href="" id="show-connexion-box">Connexion</a>
+				<a href="">Inscription</a>
+			</nav>
+			<div id="search-mask">
+				<ul>
+					<li>Un resto</li>
+					<li>Un autre resto</li>
+					<li>Le crous de Dauphine</li>
+					<li>Encore un autre resto</li>
+					<li>Voir tous les résultats <i style="font-style: normal; text-transform: none;"></i></li>
+				</ul>
+				<span>Restaurants populaires</span>
+				<ul>
+					<li>Un resto</li>
+					<li>Un autre resto</li>
+				</ul>
+			</div>
+		</header>
+
+		<main>
+			<h1>Inscription</h1>
+                        
+		<form action="AjoutUtilisateurParticulierServlet" method="post">
+                    <div>
+                        <label> Je suis un client / Pro </label>
+                    </div>
+                    
+                    <div>
+                        <label for="nom" > Nom </label>
+                        <input id="nom" type="text" name="nom" maxlength="10"> 
+                    </div>
+                    <div>
+                        <label for="prenom" > Prenom </label>
+                        <input id="prenom" type="text" name="prenom" maxlength="10"> 
+                    </div>   
+                    <div>
+                        <label for="mail" > Adresse mail </label>
+                        <input id="mail" type="text" name="email"> 
+                    </div>    
+                    <div>    
+                        <label for="mdp" > Mot de passe </label>
+                        <input id="mdp" type="password" name="mdp"> 
+                    </div> 
+                    <div>
+                        <label for="adresse" > Adresse </label>
+                        <input id="adresse" type="text" name="adresse"> 
+                    </div>  
+                    <div>
+                        <label for="phone">Phone :</label>
+                        <input id="phone" type="text" name="phone">
+                    </div>    
+                    <div>    
+                        <input type="submit" value="Soumettre">
+                    </div>     
+                </form>
+		</main>
+
+		<footer>
+			<div>
+				<ul>
+					<li>Découvrir The Spoon</li>
+					<li><a href="">Qui sommes-nous?</a></li>
+					<li><a href="">On parle de nous</a></li>
+					<li><a href="">Notre blog</a></li>
+				</ul>
+				<ul>
+					<li>Besoin d'aide</li>
+					<li><a href="">Contactez-nous</a></li>
+					<li><a href="">FAQ</a></li>
+					<li><a href="">Conditions générales d'utilisation</a></li>
+					<li><a href="">Politique de confidentialité & cookies</a></li>
+				</ul>
+				<ul>
+					<li>Espace pro</li>
+					<li><a href="">Proposez votre restaurant</a></li>
+					<li><a href="">Espace client professionnel</a></li>
+				</ul>
+			</div>
+			<div>
+				<span>&copy;2018 The Spoon — <a href="">Mentions légales</a></span>
+			</div>
+			<div>
+				<a href="" title="Suivez-nous sur Facebook"><i class="fab fa-facebook-f"></i></a>
+				<a href="" title=""><i class="fab fa-instagram"></i></a>
+				<a href="" title><i class="fab fa-twitter"></i></a>
+			</div>
+		</footer>
+
+		<!-- Import de jQuery 3.3.1 -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script>
+			$(document).ready(function() {
+
+				//Barre de recherche du header :
+				$('nav > input').focus(function(e) {
+					$('#search-mask').fadeIn(50);
+				}).blur(function(e) {
+					$('#search-mask').fadeOut(50);
+				}).keyup(function(e) {
+					if ($(this).val().length == 0) {
+						$('#search-mask ul').eq(0).slideUp(50);
+					}
+					else {
+						$('#search-mask ul').eq(0).slideDown(50);
+					}
+					$('#search-mask i').text('pour « ' + $(this).val() + ' »'); //temporaire
+				})/*.keyup()*/;
+
+				//On masque les suggestions de recherche lorsque le focus était sur la barre de recherche alors qu'on a scrollé :
+				$(window).scroll(function(e) {
+					$('nav > input').blur();
+				});
+
+				//Barre d'onglets Annonces/Menu/Avis :
+				$('.tab-nav li').click(function(e) {
+					$('#' + $(this).parent().children('li.active').attr('show') + '-tab').slideUp(100);
+					$('#' + $(this).attr('show') + '-tab').slideDown(100);
+					$(this).parent().find('li.active').removeClass('active');
+					$(this).addClass('active');
+				});
+
+				//Chargement des images supplémentaires :
+				$('.aside-img > i').click(function(e) {
+					for (var i = 0; i < 2; i++) {
+						var $img = $('<img class="img-openable" src="" alt="Image supplémentaire" style="background: repeating-linear-gradient(-45deg, #ddd 0, #ddd 5px, #ccc 5px, #ccc 10px); height: 100px; font-size: 14px; border-color: #fafafa; display: none; color: #00bfa5; text-transform: uppercase; font-size: 16px; line-height: 16px; text-align: center; padding-top: 42px;">');
+						$(this).parent().append($img);
+					}
+					$(this).parent().children('img:hidden').each(function(e) {
+						$(this).slideDown(100);
+					});
+					$(this).remove();
+				});
+
+				$('#show-connexion-box').click(function(e) {
+					e.preventDefault();
+					$('#connexion-box').show();
+					$('#box-mask').fadeIn(500);
+					$('body').addClass('no-scroll');
+				});
+
+				$('#box-mask').click(function(e) {
+					$(this).fadeOut(500);
+					$('.box-content:visible').fadeOut(200);
+					$('body').removeClass('no-scroll');
+				});
+
+			});
+		</script>
+	</body>
+</html>

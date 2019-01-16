@@ -1,0 +1,136 @@
+.aside-img {
+	font-size: 0;
+	position: relative;
+	margin-bottom: 25px;
+}
+
+.aside-img > img {
+	transition: border-radius 0.5s, margin 1s;
+	width: 100%;
+	margin-bottom: 2px;
+	display: block;
+}
+
+.aside-img > img:first-child {
+	border-radius: 7px 32px 0 0;
+}
+
+.aside-img > img:last-child {
+	border-radius: 0 0 7px 12px;
+	margin-bottom: 0;
+}
+
+.aside-img > i {
+	color: #1de9b6;
+	display: inline-block;
+	font-size: 40px;
+	cursor: pointer;
+	background-color: #fafafa;
+	position: absolute;
+	bottom: -20px;
+	left: 50%;
+	margin-left: -20px;
+	border-radius: 50%;
+	padding: 3px;
+}
+
+.aside-img > i:hover {
+	color: #00bfa5;
+}
+
+.categories-list {
+	margin: 10px 0;
+	font-size: 0;
+	line-height: 22px;
+}
+
+.categories-list > span {
+	font-size: 15px;
+	background-color: #eee;
+	color: #00bfa5;
+	padding: 2px 5px;
+	display: inline-block;
+	border-radius: 15px;
+	cursor: default;
+	margin-right: 5px;
+	line-height: 17px;
+}
+
+.categories-list > span:hover {
+	background-color: #e0e0e0;
+}
+
+
+.resto-contact {
+	margin: 15px 5px;
+}
+
+.resto-contact p {
+	font-size: 0;
+}
+
+.resto-contact i {
+	font-size: 16px;
+	margin-right: 5px;
+}
+
+.resto-contact span {
+	font-size: 16px;
+	color: #000;
+}
+
+
+.resto-desc {
+	background-color: #f4f4f4;
+	padding: 20px 10px;
+	border-radius: 3px;
+}
+
+.resto-desc h2 {
+	border-bottom: 1px solid #00bfa5;
+	padding-bottom: 5px;
+}
+
+.resto-desc p {
+	line-height: 22px;
+	margin-bottom: 0;
+}
+
+
+.tab-nav {
+	list-style: none;
+	padding: 0;
+	margin: -10px -10px 10px;
+	font-size: 0;
+}
+
+.tab-nav li {
+	transition: padding 0.1s, border 0.1s;
+	display: inline-block;
+	width: calc(100% / 2 - 24px);
+	border-top: 1px solid #e4e4e4;
+	font-family: Comfortaa;
+	font-weight: 400;
+	font-size: 16px;
+	text-transform: uppercase;
+	color: #444;
+	text-align: center;
+	padding: 12px;
+	cursor: pointer;
+}
+
+.tab-nav li:not(.active):hover {
+	border-top: 3px solid #e4e4e4;
+	background-color: #fcfcfc;
+	padding-top: 10px;
+	text-decoration: underline;
+	color: #00bfa5;
+}
+
+.tab-nav li.active {
+	border-top: 3px solid #1de9b6;
+	padding-top: 10px;
+	cursor: default;
+	color: #000;
+	font-weight: 700;
+}
