@@ -1,6 +1,6 @@
 
 body {
-	font-family: 'Source Sans Pro';
+	font-family: Roboto;
 	font-weight: 400;
 	font-size: 15px;
 	margin: 0;
@@ -34,6 +34,7 @@ hr {
 	z-index: 888;
 	overflow: visible;
 	margin: 15px 0;
+	background-color: inherit;
 }
 
 hr:after {
@@ -44,7 +45,7 @@ hr:after {
 	transform: translateX(-50%);
 	font-size: 15px;
 	color: #ccc;
-	background-color: #fff;
+	background-color: inherit;
 	padding: 0 5px;
 	z-index: 999;
 	text-transform: uppercase;
@@ -163,7 +164,7 @@ nav > input {
 	border-bottom: 2px solid transparent;
 }
 
-nav > input::placeholder, textarea::placeholder {
+nav > input::placeholder, input::placeholder, textarea::placeholder {
 	color: #aaa;
 	opacity: 1;
 }
@@ -263,6 +264,36 @@ nav > a:last-child {
 	color: #bbb;
 	margin: 30px 0 -10px;
 	display: block;
+}
+
+header nav > a > span {
+	color: #00bfa5;
+}
+
+header #notif {
+	position: relative;
+	font-size: 23px;
+	padding: 0 5px;
+	border-radius: 50%;
+	margin-left: 0; /* TMP */
+}
+
+header #notif:hover {
+	background-color: #eee;
+}
+
+
+header #notif[new]:after {
+	content: '';
+	position: absolute;
+	top: -5px;
+	right: -0;
+	background-color: #1de9b6; /* ou #f44336 */
+	color: #fff;
+	padding: 5px;
+	border-radius: 50%;
+	font-size: 0;
+	border: 2px solid #fff;
 }
 
 /* Footer */
@@ -373,6 +404,7 @@ main {
 	margin: 10px auto;
 	padding: 10px;
 	color: #444;
+	min-height: calc(100vh - 82px - 346px);
 }
 
 main h1 {
