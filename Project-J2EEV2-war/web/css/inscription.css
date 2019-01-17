@@ -129,6 +129,14 @@ main form > div ul li.selected {
 	color: #fff;
 }
 
+.err-msg {
+	display: block;
+	text-align: right;
+	padding: 5px;
+	color: #F44336;
+	font-size: 15px;
+}
+
 @media only screen and (max-width: 700px) {
 
 	body {
@@ -157,7 +165,7 @@ main form > div ul li.selected {
 		width: calc(100% - 26px);
 	}
 
-	main form > div ul{
+	main form > div ul {
 		width: calc(100% - 10px);
 	}
 
