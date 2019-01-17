@@ -1,0 +1,175 @@
+body {
+	background: url(../img/background.jpg) no-repeat top center #fafafa;
+	background-size: 100%;
+}
+
+main > h1 {
+	color: #fff;
+	text-shadow: 0 0 30px #000, 0 0 40px #000, 0 0 50px #000;
+}
+
+main form {
+	max-width: 626px;
+	margin: 0 auto;
+	border-radius: 5px 30px 10px 15px;
+	background-color: #fafafa;
+	padding: 15px 25px;
+}
+
+main form > div {
+	font-size: 0;
+	padding: 10px 0;
+}
+
+main form > div label {
+	width: 300px;
+	font-size: 15px;
+	display: inline-block;
+	color: #000;
+}
+
+main form > div label.active {
+	color: #00bfa5;
+}
+
+main input,
+main form > div ul {
+	transition: all 0.3s;
+	padding: 10px 12px;
+	font-size: 16px;
+	font-family: inherit;
+	border: 1px solid #e4e4e4;
+	background-color: #fff;
+	border-radius: 3px;
+	display: inline-block;
+	width: 300px;
+	margin: 0;
+}
+
+#prenom {
+	width: 132px;
+	margin-right: 10px;
+}
+
+#nom {
+	width: 132px;
+}
+
+#cp {
+	width: 90px;
+	margin-right: 10px;
+}
+
+#ville {
+	width: 174px;
+}
+
+main input:focus {
+	border: 2px solid #1de9b6;
+	padding: 9px 11px;
+}
+
+main button {
+	transition: all 0.3s;
+	display: inline-block;
+	background-color: rgba(29, 233, 182, 0.25);
+  border: 0px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  color: #00bfa5;
+  font-size: 17px;
+  font-family: "Roboto";
+  font-weight: 400;
+}
+
+main form > div ul {
+	list-style: none;
+	padding: 4px;
+	font-size: 0;
+	width: 316px;
+}
+
+main form > div ul li {
+	display: inline-block;
+	background-color: transparent;
+  border: 0px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #444;
+  font-size: 16px;
+  font-family: "Roboto";
+  font-weight: 400;
+	margin: 2px;
+	width: calc(50% - 20px);
+	text-align: center;
+}
+
+main form > div ul li:hover {
+	background-color: rgba(29, 233, 182, 0.25);
+	color: #000;
+}
+
+main button:hover,
+main form > div ul li:active {
+	background-color: #00bfa5;
+	color: #fff;
+}
+
+main form > div ul li.selected {
+	background-color: #1de9b6;
+	color: #fff;
+}
+
+@media only screen and (max-width: 700px) {
+
+	body {
+		background-image: none;
+	}
+
+	main > h1 {
+		color: #000;
+		text-shadow: none;
+	}
+
+	main form {
+		padding: 0;
+	}
+
+}
+
+@media only screen and (max-width: 650px) {
+
+	main form > div label {
+		display: block;
+		padding: 5px 0 10px;
+	}
+
+	main input {
+		width: calc(100% - 26px);
+	}
+
+	main form > div ul{
+		width: calc(100% - 10px);
+	}
+
+	main button {
+		display: block;
+		width: 100%;
+	}
+
+	#prenom,
+	#nom {
+		width: calc(50% - 31px);
+	}
+
+	#cp {
+		width: 20%;
+	}
+
+	#ville {
+		width: calc(80% - 62px);
+	}
+
+}
