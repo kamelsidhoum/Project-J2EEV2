@@ -67,7 +67,12 @@ $(document).ready(function() {
             'cp':{
                 'minlength': 5,
 								'msg': "Le format du code postal n'est pas valide."
-            }
+            },
+
+						'siret':{
+							'minlength': 14,
+							'msg': "Le numéro SIRET n'est pas valide."
+						}
 
         };
 

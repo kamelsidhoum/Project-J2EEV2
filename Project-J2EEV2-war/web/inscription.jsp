@@ -25,7 +25,7 @@
 
 				<div class="affiche-pro" style="display: none;">
 					<label for="siret">Numéro SIRET</label>
-					<input type="text" id="siret" name="siret" placeholder="N° SIRET" maxlength="50">
+					<input type="text" id="siret" name="siret" placeholder="N° SIRET" maxlength="14">
 				</div>
 
 				<div>
