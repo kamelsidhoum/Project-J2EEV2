@@ -282,9 +282,7 @@ header #notif:hover {
 	background-color: #eee;
 }
 
-<div new></div>
 
-header #notif[new=true]:after,*/
 header #notif[new]:after {
 	content: '';
 	position: absolute;
