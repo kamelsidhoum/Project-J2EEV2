@@ -69,7 +69,12 @@ main input:focus {
 	padding: 9px 11px;
 }
 
-main button {
+main input.error:focus {
+	border-color: #f44336;
+}
+
+main button,
+main .btn {
 	transition: all 0.3s;
 	display: inline-block;
 	background-color: rgba(29, 233, 182, 0.25);
@@ -81,6 +86,7 @@ main button {
   font-size: 17px;
   font-family: "Roboto";
   font-weight: 400;
+	text-decoration: none;
 }
 
 main form > div ul {
@@ -112,6 +118,7 @@ main form > div ul li:hover {
 }
 
 main button:hover,
+main .btn:hover,
 main form > div ul li:active {
 	background-color: #00bfa5;
 	color: #fff;
@@ -154,7 +161,8 @@ main form > div ul li.selected {
 		width: calc(100% - 10px);
 	}
 
-	main button {
+	main button,
+	main .btn {
 		display: block;
 		width: 100%;
 	}

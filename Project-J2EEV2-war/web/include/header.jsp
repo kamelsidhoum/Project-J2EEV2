@@ -21,7 +21,7 @@
 			<nav>
 				<h1>The <span>Spoon</span></h1>
 				<input type="text" placeholder="Rechercher un restaurant, une ville, une catégorie...">
-				<a href="">Bonjour <span>&lt;prénom&gt;</span></a>
+				<a href="">Bonjour <span>Berra</span></a>
 				<a href="" id="notif" new><i class="fas fa-bell"></i></a>
 				<!--
 				<a href="" id="show-connexion-box">Connexion</a>
